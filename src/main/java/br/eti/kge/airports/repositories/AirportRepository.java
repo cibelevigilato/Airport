@@ -2,6 +2,7 @@
 package br.eti.kge.airports.repositories;
 
 import br.eti.kge.airports.entities.Airport;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +13,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 
 public interface AirportRepository extends JpaRepository<Airport, Long>{    
-
+List<Airport>findByCityIgnoreCase(String city);
 }
 
