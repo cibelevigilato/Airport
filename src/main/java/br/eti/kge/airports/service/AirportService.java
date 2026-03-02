@@ -21,16 +21,13 @@ public class AirportService {
       return airportRepository.findAll();
       }
       
-      
-     public List<AirportMinDTO>findByCountry(String country){
-       List<Airport> resultAirport = airportRepository.findByCountryIgnoreCase(country);
-       
-       List<AirportMinDTO> resultDTO = resultAirport.stream().map(x -> new AirportMinDTO(x)).toList();
-       
-       return resultDTO;
+            
+     
+     public Airport findByIataCode(String Iata){
+      Airport result = airportRepository.findByIataCode(Iata);
+        
+       return result;
    }
 
-    
-}
 
-         
+}        

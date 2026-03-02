@@ -36,20 +36,28 @@ public class AirportController {
         return result;
     }
 
-     @GetMapping("/country/{countryName}")
-     public ResponseEntity<List<AirportMinDTO>> findBycountryIgnoreCase (@PathVariable String countryName){
-         List<AirportMinDTO> result = airportService.findByCountry(countryName);
-         
-         
-         
-     if (result.isEmpty()){
-         return ResponseEntity.notFound().build();
-     }else{
-     
+    @GetMapping("/iatacode/{iataCode}")
+    public ResponseEntity<Airport> findByIataCode(@PathVariable String iataCode) {
+    Airport result = airportService.findByIataCode(iataCode);
+
+    if (result == null) {
+        // Ops.. Aeroporto vazio...
+        // notFound devolve 404
+        return ResponseEntity.notFound().build();
+    } else {
+        // Eba! Tem dados!
+        // ok devolve 200
         return ResponseEntity.ok(result);
-     
-     }
-     
+    }
 }
 }
+         
+         
+         
+    
+     
+     
+     
+
+
     
